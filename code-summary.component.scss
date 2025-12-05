@@ -1,0 +1,78 @@
+/* Container style for some breathing space */
+.table-container {
+  margin-top: 10px;
+  overflow-x: auto;
+  max-width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Export button style */
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Header cells */
+thead th {
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+  padding: 8px 6px;
+  text-align: left;
+  vertical-align: bottom;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Filter input inside header */
+thead th input {
+  margin-top: 4px;
+  width: 95%;
+  padding: 5px 6px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.2s ease;
+}
+
+thead th input:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+/* Table body cells */
+tbody td {
+  border-bottom: 1px solid #eee;
+  padding: 8px 6px;
+  color: #444;
+}
+
+/* Zebra striping for readability */
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Row hover effect */
+tbody tr:hover {
+  background-color: #e3f2fd;
+}

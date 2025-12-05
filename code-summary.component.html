@@ -1,0 +1,47 @@
+<button (click)="exportAsXLSX()">Save excel</button>
+
+<table border="1" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>CODE<br><input type="text" (input)="applyColumnFilter('codeNo', $event)"></th>
+      <th>VERSION<br><input type="text" (input)="applyColumnFilter('version', $event)"></th>
+      <th>SUBJECT ID<br><input type="text" (input)="applyColumnFilter('subjectId', $event)"></th>
+      <th>DESCRIPTIVE TITLE<br><input type="text" (input)="applyColumnFilter('subjectTitle', $event)"></th>
+      <th>COURSE<br><input type="text" (input)="applyColumnFilter('course', $event)"></th>
+      <th>DEPT CODE <br><input type="text" (input)="applyColumnFilter('deptCode', $event)"></th>
+      <th>YEAR<br><input type="text" (input)="applyColumnFilter('yearLevel', $event)"></th>
+      <th>SET NO<br><input type="text" (input)="applyColumnFilter('setNo', $event)"></th>
+      <th>LEC<br><input type="text" (input)="applyColumnFilter('lecUnits', $event)"></th>
+      <th>LAB<br><input type="text" (input)="applyColumnFilter('labUnits', $event)"></th>
+      <th>TIME<br><input type="text" (input)="applyColumnFilter('time', $event)"></th>
+      <th>DAY<br><input type="text" (input)="applyColumnFilter('day', $event)"></th>
+      <th>ROOM<br><input type="text" (input)="applyColumnFilter('roomNumber', $event)"></th>
+      <th>INSTRUCTOR<br><input type="text" (input)="applyColumnFilter('instructor', $event)"></th>
+      <th>OE<br><input type="text" (input)="applyColumnFilter('oe', $event)"></th>
+      <th>DEPT<br><input type="text" (input)="applyColumnFilter('dept', $event)"></th>
+      <th>CAMPUS<br><input type="text" (input)="applyColumnFilter('roomCampusLocation', $event)"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let row of filteredCodes">
+      <td>{{ row.codeNo }}</td>
+      <td>{{ row.version }}</td>
+      <td>{{ row.subjectId }}</td>
+      <td>{{ row.subjectTitle }}</td>
+      <td>{{ row.course }}</td>
+      <td>{{ row.deptCode }}</td>
+      <td>{{ row.yearLevel }}</td>
+      <td>{{ row.setNo }}</td>
+      <td>{{ row.lecUnits }}</td>
+      <td>{{ row.labUnits }}</td>
+      <td>{{ row.time }}</td>
+      <td>{{ row.day }}</td>
+      <td>{{ row.roomNumber }}</td>
+      <td>{{ row.instructor }}</td>
+      <td>{{ row.oe }}</td>
+      <td>{{ row.dept }}</td>
+      <td>{{ row.roomCampusLocation }}</td>
+    </tr>
+  </tbody>
+</table>
