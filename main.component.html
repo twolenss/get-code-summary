@@ -1,0 +1,166 @@
+<mat-drawer-container class="example-container" style="max-height: 100vh" id="main">
+  <mat-drawer #drawer mode="side" opened="true">
+    <div id="coverp">
+      <img [src]="image" width="110" id="photop" onError="this.src='assets/noimage.jpg'" />
+      <div id="fullname" style="padding-bottom: 5px">
+        {{ id }}
+        <br />
+        {{ name | titlecase }}
+        <style type="text/css">
+          .chapsign:focus {
+            background-color: inherit !important;
+          }
+        </style>
+        <table style="width: 100%">
+          <tbody>
+            <tr>
+              <td style="width: 55%">
+                <small>
+                  <a (click)="openDialogchangepassword()" mat-button color="default"
+                    style="font-size: 10px; text-align: right" class="chapsign">
+                    <i class="material-icons iconsize">lock</i>
+                    Change Password
+                  </a>
+                </small>
+              </td>
+              <td style="text-align: center; text-align: left">
+                <small>
+                  <a (click)="logout()" mat-button color="default" class="chapsign"
+                    style="font-size: 10px; float: left">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Sign Out
+                  </a>
+                </small>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="global.domain != null" style="max-height: calc(100vh - 360px); overflow-y: auto"></div>
+
+    <!-- #region Left Menu -->
+    <mat-accordion>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="material-icons iconsize">chrome_reader_mode</i>
+            <b>&nbsp; Academic</b>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')" style="display:inline;padding: 0">
+          <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'" style="padding-left: 7px;">
+            <mat-panel-title>
+              <i class="material-icons iconsize">calendar_today</i><b>Exam Schedule Manager</b>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'exam-schedule-uploader'}}]" mat-button>
+            <i class="material-icons iconsize">cloud_upload</i> Exam Schedule Uploader
+          </a>
+          <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'exam-schedule-manager'}}]" mat-button>
+            <i class="material-icons iconsize">cloud</i> Exam Scheduler
+          </a>
+          <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'hello-world'}}]" mat-button>
+            <i class="material-icons iconsize">assignment</i> Hello World
+          </a>
+           <!-- <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'date-picker'}}]" mat-button>
+            <i class="material-icons iconsize">add</i> Add Date 
+          </a> -->
+           <!-- <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'room-mapping'}}]" mat-button>
+            <i class="material-icons iconsize">edit</i> Room Mapping 
+          </a> -->
+          <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'parent'}}]" mat-button>
+            <i class="material-icons iconsize">add</i> Main Exam Scheduler
+          </a>
+            <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'scheduler'}}]" mat-button>
+            <i class="material-icons iconsize">add</i> Scheduler
+          </a>
+            <a *ngIf="global.checkaccess(':ExaminationSchedule:ExaminationScheduleGet')"
+            [routerLink]="['../main',{outlets:{div:'summary'}}]" mat-button>
+            <i class="material-icons iconsize">add</i> Code Summary
+          </a> 
+          
+          
+        </mat-expansion-panel>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div style="
+        bottom: 0 !important;
+        position: fixed;
+        width: 300px;
+        background-color: #294a70;
+        color: white;
+      ">
+      <div style="height: 5px; background-color: #ffab1f"></div>
+      <p style="font-size: 11px; line-height: 1.3; padding-left: 10px">
+        ©{{ global.year }} USL ERP <br />
+        University of Saint Louis - Tuguegarao City, Cagayan <br />
+        Maintained by: CDT.Team
+      </p>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div style="padding-left: 10px; padding-top: 10px">
+      <p style="margin: 0; color: #294a70">
+        <small>
+          <b> Active Configuration: </b>
+          <span *ngIf="
+              global.checkdomain('0001') ||
+              global.checkdomain('0002') ||
+              global.checkdomain('0003') ||
+              global.checkdomain('0004') ||
+              global.checkdomain('0005') ||
+              global.checkdomain('0006') ||
+              global.checkdomain('0008') ||
+              global.checkdomain('0009') ||
+              global.checkdomain('0071') ||
+              global.checkdomain('0072') ||
+              global.checkdomain('0073')
+            ">{{ global.domain }}</span>
+          {{ global.displaysem }} {{ global.displayyear }}
+        </small>
+        <button (click)="openDialog()" color="primary" style="
+            background-color: #294a70;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            padding-bottom: 3px;
+          ">
+          <small>change</small>
+        </button>
+      </p>
+    </div>
+
+    <div style="margin-left: 10px; margin-top: 8px" class="hnav">
+      <button (click)="drawer.toggle()" mat-button color="primary" style="min-width: 10px; width: 32px">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button [routerLink]="['../main', { outlets: { div: 'home' } }]" mat-button color="primary"
+        style="min-width: 10px; width: auto">
+        <mat-icon>home</mat-icon>
+        Home &nbsp;
+      </button>
+    </div>
+
+    <mat-card class="matcontainer" id="routererp" style="padding: 0">
+      <router-outlet name="div"></router-outlet>
+    </mat-card>
+    <div>
+      <div style="height: 5px; background-color: #ffab1f"></div>
+      <div style="height: 5px; background-color: #294a70"></div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
